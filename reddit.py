@@ -18,5 +18,31 @@ def init_reddit():
 
 
 def get_subreddit_user_count(subreddit_name):
-    subreddit = reddit.subreddit(subreddit_name)
-    return subreddit.accounts_active
+    sub = reddit.subreddit(subreddit_name)
+    return sub.subscribers
+
+
+def get_subreddit_active_users(subreddit_name):
+    sub = reddit.subreddit(subreddit_name)
+    return sub.accounts_active
+
+
+def get_crypto_popularity(crypto):
+    total_users = 0
+    active_users = 0
+    for subreddit in config.coins_info[crypto]['subreddits']:
+        total_users += get_subreddit_user_count(subreddit)
+        active_users += get_subreddit_active_users(subreddit)
+    return total_users
+
+
+def get_all_crypto_info():
+    output = {}
+    for coin in config.coins_info.keys():
+        output[coin] = {'total_users': get_crypto_popularity(coin), 'active_users': get_subreddit_active_users(coin)}
+    return output
+
+
+if __name__ == "__main__":
+    init_reddit()
+    print(get_all_crypto_info())
