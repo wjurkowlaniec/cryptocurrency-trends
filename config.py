@@ -18,4 +18,6 @@ reddit = {
 }
 
 
-new_config = {}
+new_config = { 
+    "reddit_server": "https://reddit.com"
+}
