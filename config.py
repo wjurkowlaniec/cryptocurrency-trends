@@ -16,3 +16,8 @@ coins_info = {
 reddit = {
     'crypto_subs': ['darknetmarkets', 'bitcoin', 'ethereum', 'dogecoin', 'cryptocurrency', 'btc', 'bitcoinmarkets']
 }
+
+
+new_config = { 
+    "reddit_server": "https://reddit.com"
+}
